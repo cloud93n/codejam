@@ -1,0 +1,37 @@
+import time,sys
+start_time = time.time()
+
+def inp():
+    return int(input())
+
+def inpli():
+    return list(map(int, input().split()))
+
+def inpls():
+    return input().split()
+
+def solve():
+    S = input()
+    res = ""
+    for i in range(len(S)-1):
+        if S[i] > S[i+1]:
+            res += S[i]
+        elif S[i] < S[i+1]:
+            res += S[i]+S[i]
+        else:
+            if i+2 > len(S)-1:
+                res += S[i]
+            else:
+                if S[i] < S[i+2]:
+                    res += S[i]+S[i]
+                else:
+                    res += S[i]
+            
+    return res+S[-1]
+
+T=inp()
+for i in range(T):
+    result = solve()
+    print('Case #{}: {}'.format(i+1,result))
+
+print('Time_elapsed :',time.time()-start_time,' s')
